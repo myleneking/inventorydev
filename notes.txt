@@ -1,0 +1,90 @@
+Assigned Tasks
+--------------
+- Order Management
+- Sales Management
+- Tools Management
+
+server
+------
+203.140.228.131 (sellco-apt)
+user: mylene
+pwd: 8Xn7jSnyBT
+
+ssh -p 1022 mylene@203.140.228.131
+
+git repository
+--------------
+git+ssh://mylene@altair.winas.jp:1022/srv/repository/sellco-app.git
+
+development servers
+-------------------
+/srv/dev01.sellco.jp
+/srv/dev02.sellco.jp
+/srv/dev03.sellco.jp
+
+http://dev03.sellco.jp/
+-----------------------
+user: sellco
+pwd: G5baAUvero
+
+user: 1
+pwd: winas1234
+
+user: winas
+pwd: winas4321
+
+application log files
+---------------------
+/srv/dev03.sellco.jp/logs/app_log.XX.
+
+readmine link
+-------------
+http://redmine.winas.jp/projects/stock-management/wiki/URL_Mapping
+http://redmine.winas.jp/documents/339 - screen design
+http://redmine.winas.jp/documents/335 - asta
+http://redmine.winas.jp/documents/334 - database structure
+http://redmine.winas.jp/projects/stock-management/wiki
+
+session table
+-------------
+CREATE TABLE `sellco_dev03_sessions` (
+  `id` char(72) NOT NULL,
+  `session_data` longtext,
+  `expires` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+script/get_config.pl
+
+MySQL
+-----
+GRANT ALL ON sellco_dev03.* TO 'sellco_dev03'@'localhost' IDENTIFIED BY '12345';
+FLUSH PRIVILEGES;
+
+RUNNING SERVER WITH DEBUG PANEL
+-------------------------------
+plackup -s Starman --port 3000 -I /media/myking/sellco/app/lib --app /media/myking/sellco/app/sellco_debug.psgi --workers 1 -r
+
+
+CREATE MODULE
+-------------
+script/sellco_create.pl controller PurchaseOrder::List
+
+created "/media/myking/sellco/app/script/../lib/Sellco/Web/Controller/PurchaseOrder"
+ exists "/media/myking/sellco/app/script/../t"
+created "/media/myking/sellco/app/script/../lib/Sellco/Web/Controller/PurchaseOrder/List.pm"
+created "/media/myking/sellco/app/script/../t/controller_PurchaseOrder-List.t"
+
+SETUP
+-----
+D:\myking\sellco\app\conf\sellco_web_stg01.conf.edit
+
+
+purchase_order_status
+---------------------
+0 = unfulfilled conditions
+1 = unissued
+2 = during processing to issue
+3 = issued
+4 = incomplete purchase
+5 = complete purchase

@@ -1,0 +1,112 @@
+/media/myking/sellco/app/bin/sellco.pl create_company --company_name NAME --password PASS
+Use of uninitialized value $NAME in concatenation (.) or string at /media/myking/sellco/app/bin/../lib/Sellco/DBIC/SchemaGenerator.pm line 47.
+Can't use an undefined value as a HASH reference at /media/myking/sellco/app/bin/../lib/Sellco/DBIC/SchemaGenerator.pm line 50.
+
+--bug identified bu fukusaka
+
+/media/myking/sellco/app/bin/sellco.pl create_company --company_name NAME --password PASS
+Warning: World-writable config file '/media/myking/sellco/app/etc/my_utf8.cnf' is ignored
+Can't execute SQL at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 74: DBIx::Class::Storage::DBI::__ANON__(): DBI Exception: DBD::mysql::db do failed: The user specified as a definer ('fukusaka'@'localhost') does not exist [for Statement "CALL MY_NEXT_VALUE(?,?,?,@MY_NEXT_VALUE)"] at /media/myking/sellco/app/bin/../lib/Sellco/DBIC/WinasSeqGenerate.pm line 37
+ at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 73.
+	Sellco::CLI::Command::create_company::__ANON__('DBIx::Class::Exception=HASH(0x9c36b28)') called at /usr/local/share/perl/5.10.1/Try/Tiny.pm line 100
+	Try::Tiny::try('CODE(0x86fe5e8)', 'Try::Tiny::Catch=REF(0x909fd88)') called at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 78
+	Sellco::CLI::Command::create_company::execute('Sellco::CLI::Command::create_company=HASH(0x8715088)', 'Getopt::Long::Descriptive::Opts::__OPT__::2=HASH(0x86ff190)', 'ARRAY(0x83c6190)') called at /usr/local/share/perl/5.10.1/App/Cmd.pm line 282
+	App::Cmd::execute_command('Sellco::CLI=HASH(0x87481c8)', 'Sellco::CLI::Command::create_company=HASH(0x8715088)', 'Getopt::Long::Descriptive::Opts::__OPT__::2=HASH(0x86ff190)') called at /usr/local/share/perl/5.10.1/App/Cmd.pm line 210
+	App::Cmd::run('Sellco::CLI') called at /media/myking/sellco/app/bin/sellco.pl line 16
+
+--changed definer
+UPDATE `mysql`.`proc` p SET definer = 'sellco_dev03@localhost' WHERE definer='fukusaka@localhost'
+
+/media/myking/sellco/app/bin/sellco.pl create_company --company_name NAME --password PASS
+Warning: World-writable config file '/media/myking/sellco/app/etc/my_utf8.cnf' is ignored
+Can't execute SQL at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 74: DBIx::Class::Row::insert(): DBI Exception: DBD::mysql::st execute failed: Duplicate entry '2-1' for key 'PRIMARY' [for Statement "INSERT INTO `groups` ( `company_id`, `created_at`, `group_id`, `group_name`, `is_system`, `modified_at`) VALUES ( ?, ?, ?, ?, ?, ? )" with ParamValues: 0='2', 1='2013-03-04 06:56:09', 2='1', 3="ç®¡ç?ã?­ã?¼ã?«", 4=1, 5='2013-03-04 06:56:09'] at /media/myking/sellco/app/bin/../lib/Sellco/DBIC/WinasSeqGenerate.pm line 76
+ at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 73.
+	Sellco::CLI::Command::create_company::__ANON__('DBIx::Class::Exception=HASH(0xa54cda0)') called at /usr/local/share/perl/5.10.1/Try/Tiny.pm line 100
+	Try::Tiny::try('CODE(0x8f855e8)', 'Try::Tiny::Catch=REF(0x9930708)') called at /media/myking/sellco/app/bin/../lib/Sellco/CLI/Command/create_company.pm line 78
+	Sellco::CLI::Command::create_company::execute('Sellco::CLI::Command::create_company=HASH(0x8f9c088)', 'Getopt::Long::Descriptive::Opts::__OPT__::2=HASH(0x8f86190)', 'ARRAY(0x8c4d190)') called at /usr/local/share/perl/5.10.1/App/Cmd.pm line 282
+	App::Cmd::execute_command('Sellco::CLI=HASH(0x8fcf1c8)', 'Sellco::CLI::Command::create_company=HASH(0x8f9c088)', 'Getopt::Long::Descriptive::Opts::__OPT__::2=HASH(0x8f86190)') called at /usr/local/share/perl/5.10.1/App/Cmd.pm line 210
+	App::Cmd::run('Sellco::CLI') called at /media/myking/sellco/app/bin/sellco.pl line 16
+
+--rerun
+
+Warning: World-writable config file '/media/myking/sellco/app/etc/my_utf8.cnf' is ignored
+Undefined subroutine &Data::Dump::dumpf called at /media/myking/sellco/app/bin/../lib/Winas/Ext/Dump.pm line 152.
+
+--upgrade Data::Dump
+
+Warning: World-writable config file '/media/myking/sellco/app/etc/my_utf8.cnf' is ignored
+Company {
+  company_address01                    => undef,
+  company_address02                    => undef,
+  company_cutoff_date                  => undef,
+  company_emails                       => undef,
+  company_fax_number                   => undef,
+  company_id                           => 5,
+  company_kana                         => undef,
+  company_limited_ipaddress            => undef,
+  company_name                         => "NAME",
+  company_phone_number                 => undef,
+  company_postcode                     => undef,
+  company_prefecture                   => undef,
+  company_purchase_registration_method => 1,
+  company_secret_seed                  => "S8ni7I9NT8dETs8Dxpl7p8h3DtZkeKR84YWuYpxCo8Pc1ZWREWWWOwr1nJX6Nstw",
+  company_tax_basis                    => 1,
+  company_url                          => undef,
+  created_at                           => "2013-03-04 07:14:10",
+  enabled                              => 1,
+  ends_at                              => undef,
+  modified_at                          => "2013-03-04 07:14:10",
+  modified_by                          => 9999,
+  rounding                             => 2,
+  salt                                 => "Kz8Kxmd9upt6Oy00d2hncoPMpfX09Z5W",
+  shadow                               => "wO9jTNSZNc+AWIw7t6xjAXJnBZ8",
+  starts_at                            => "2013-03-04 00:00:00",
+  tax_rate                             => "5.00",
+}
+
+/media/myking/sellco/app/bin/sellco.pl create_member --company_id 5 --login_name NAME --password PASS
+Warning: World-writable config file '/media/myking/sellco/app/etc/my_utf8.cnf' is ignored
+Member {
+  company_id        => 5,
+  created_at        => "2013-03-04 07:32:50",
+  enabled           => 1,
+  ends_at           => undef,
+  group_id          => 1,
+  login_name        => "NAME",
+  member_department => undef,
+  member_email      => undef,
+  member_id         => 1,
+  member_kana       => undef,
+  member_name       => undef,
+  modified_at       => "2013-03-04 07:32:50",
+  modified_by       => 9999,
+  salt              => "YfyrUQ0Ng2vEkM2ePrcksJhh3y2lZ50I",
+  shadow            => "vUcrMSpHZocYP4N0sUvaGwEZJG0",
+  starts_at         => "2013-03-04 00:00:00",
+}
+
+*****
+
+
+script/sellco_server.pl 
+Couldn't instantiate component "Sellco::Web::Model::SellcoDB", "Could not find a class for trait: QueryLog::AdoptPlack at /usr/local/share/perl/5.10.1/Catalyst/ScriptRunner.pm line 50.
+--instal
+l
+cpanm -l /opt/local Catalyst::TraitFor::Model::DBIC::Schema::QueryLog
+cpanm -l /opt/local Catalyst::TraitFor::Model::DBIC::Schema::QueryLog::AdoptPlack
+cpanm -l /opt/local Plack::Middleware::Debug::DBIC::QueryLog
+
+Task::Catalyst
+
+--stopped
+Data::Dump::Streamer
+
+
+
+
+
+
+
+
+
+

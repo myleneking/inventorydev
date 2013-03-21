@@ -1,0 +1,56 @@
+>sudo cpan
+cpan> install x
+
+Modules
+-------
+Log::Log4perl::Catalyst
+Object::Container
+Class::Accessor::Lite
+Hash::Merge
+Data::Lock
+Catalyst::Plugin::Unicode::Encoding
+
+
+*remove and install MooseX::Getopt
+--after the conflict error in methods
+
+--install
+Catalyst::ScriptRunner
+Catalyst::Restarter
+
+--upgrade
+MooseX::SemiAffordanceAccessor
+File::ChangeNotify::Watcher
+
+--install
+Catalyst::Plugin::Session::State::Cookie
+Catalyst::Plugin::Session::Store::File
+Catalyst::Plugin::Authentication
+
+
+--upgrade
+MooseX::Traits::Pluggable (MyApp)
+CatalystX::Component::Traits (MyApp)
+
+
+--install
+Catalyst::Plugin::Unicode::Encoding (sellco)
+Text::CSV
+IPC::System::Simple
+String::Random
+MooseX::MarkAsMethods
+MooseX::NonMoose
+DBIx::Class::InflateColumn::Serializer
+
+--setup
+/media/myking/sellco-app/bin/sellco.pl create_company --company_name NAME --password PASS
+
+--install
+App::Cmd
+List::Compare::Functional
+
+--update
+Exception::Class
+
+--install
+Catalyst::Authentication::Store::DBIx::Class
