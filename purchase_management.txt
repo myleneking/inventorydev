@@ -1,0 +1,3 @@
+Purchase Management screen design
+---------------------------------
+http://redmine.winas.jp/documents/355
