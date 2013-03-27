@@ -88,3 +88,25 @@ purchase_order_status
 3 = issued
 4 = incomplete purchase
 5 = complete purchase
+
+LOCAL LOGIN
+-----------
+company_login
+user:1
+pwd:winas1234
+
+user_login
+user:winas@winas.jp
+pwd:winas4321
+
+CREATING PROXY
+--------------
+open putty.exe
+-login altair
+--
+
+open winscp
+-Connection>>Proxy
+--Proxy type: SOCKS5
+--Proxy host name: localhost
+--Port number: 8081
