@@ -1,0 +1,48 @@
+less /var/log/mysql.log
+
+less /var/log/mysql
+mysql/          mysql.err       mysql.log       mysql.log.1.gz  mysql.log.2.gz  mysql.log.3.gz  mysql.log.4.gz  mysql.log.5.gz  mysql.log.6.gz  mysql.log.7.gz
+
+sudo less /etc/mysql/
+conf.d/       debian.cnf    debian-start  my.cnf        
+
+sudo less /etc/mysql/my.cnf
+
+sudo vim /etc/mysql/my.cnf
+
+sudo /etc/init.d/mysql restart
+
+sudo tail -f /var/log/mysql/mysql.log
+
+		   39 Query	select count(*) into @discard from `mysql`.`time_zone_transition_type`
+		   39 Quit	
+		   40 Connect	debian-sys-maint@localhost on 
+		   40 Query	select @@version_comment limit 1
+		   40 Query	select count(*) into @discard from `mysql`.`user`
+		   40 Quit	
+		   41 Connect	debian-sys-maint@localhost on 
+		   41 Query	select @@version_comment limit 1
+		   41 Query	select count(*) into @discard from `sellco_dev03`.`sellco_dev03_sessions`
+		   41 Quit	
+
+
+
+
+
+
+
+
+
+130405 18:24:57	   42 Connect	sellco_dev03@localhost on sellco_dev03
+130405 18:24:58	   42 Query	set autocommit=1
+		   42 Query	SELECT expires FROM sellco_dev03_sessions WHERE id = 'session:660bb4db4d0227020810a4981afb74a7f7a1bddb'
+		   42 Query	SELECT session_data FROM sellco_dev03_sessions WHERE id = 'session:660bb4db4d0227020810a4981afb74a7f7a1bddb'
+		   43 Connect	sellco_dev03@localhost on sellco_dev03
+		   43 Query	set autocommit=1
+		   43 Query	SELECT `me`.`company_id`, `me`.`created_at`, `me`.`modified_at`, `me`.`modified_by`, `me`.`enabled`, `me`.`starts_at`, `me`.`ends_at`, `me`.`shadow`, `me`.`salt`, `me`.`company_name`, `me`.`company_kana`, `me`.`company_postcode`, `me`.`company_prefecture`, `me`.`company_address01`, `me`.`company_address02`, `me`.`company_phone_number`, `me`.`company_fax_number`, `me`.`company_emails`, `me`.`company_url`, `me`.`company_tax_basis`, `me`.`rounding`, `me`.`tax_rate`, `me`.`company_cutoff_date`, `me`.`company_purchase_registration_method`, `me`.`company_secret_seed`, `me`.`company_limited_ipaddress` FROM `companies` `me` WHERE ( `me`.`company_id` = '1' )
+		   43 Query	SELECT `me`.`company_id`, `me`.`member_id`, `me`.`created_at`, `me`.`modified_at`, `me`.`modified_by`, `me`.`enabled`, `me`.`starts_at`, `me`.`ends_at`, `me`.`login_name`, `me`.`shadow`, `me`.`salt`, `me`.`member_name`, `me`.`member_email`, `me`.`member_kana`, `me`.`member_department`, `me`.`group_id`, `me`.`timezone`, `me`.`locale` FROM `members` `me` WHERE ( ( `me`.`company_id` = '1' AND `me`.`member_id` = '11' ) )
+		   43 Query	SELECT `me`.`company_id`, `me`.`purchase_order_no`, `me`.`purchase_order_sub_no`, `me`.`product_code`, `me`.`purchase_order_product_name`, `me`.`purchase_order_product_opt`, `me`.`purchase_order_product_price`, `me`.`purchase_order_product_quantity`, `me`.`purchase_order_product_amount`, `me`.`purchase_order_product_class`, `me`.`purchase_expected_date`, `me`.`sales_order_no`, `me`.`sales_order_sub_no`, `me`.`order_date`, `me`.`arriaval_quantity`, `me`.`complete`, `me`.`purchase_order_note`, `product`.`supplier_order_lot` FROM `purchase_order_details` `me` LEFT JOIN `products` `product` ON ( `product`.`company_id` = `me`.`company_id` AND `product`.`product_code` = `me`.`product_code` ) WHERE ( ( `me`.`company_id` = '1' AND `me`.`purchase_order_no` = '1' ) ) ORDER BY `me`.`purchase_order_no` DESC
+		   42 Query	SELECT expires FROM sellco_dev03_sessions WHERE id = 'session:660bb4db4d0227020810a4981afb74a7f7a1bddb'
+		   42 Query	UPDATE sellco_dev03_sessions SET expires = '1366367098' WHERE id = 'session:660bb4db4d0227020810a4981afb74a7f7a1bddb'
+130405 18:24:59	   43 Quit	
+		   42 Quit	
