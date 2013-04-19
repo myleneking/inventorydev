@@ -1,0 +1,4 @@
+company_id,purchase_order_no,purchase_order_sub_no,sales_order_no,sales_order_sub_no,order_date,purchase_order_product_name,purchase_order_product_opt,purchase_order_product_price,purchase_order_product_quantity,purchase_order_product_amount,purchase_order_product_class,arriaval_quantity,complete,purchase_expected_date,purchase_order_note,product_code
+1,1,2,10,101,"2013-03-25 01:25:00",LG,a,200,5,1000,0,1,1,"0000-00-00 00:00:00","test only1",20130315111408-1
+1,1,3,10,101,"2013-03-25 01:25:00",sam1,a,200,5,1000,0,1,1,"0000-00-00 00:00:00","test only11",20130315111408-11
+1,2,4,10,101,"2013-03-25 01:25:00",sam2,b,200,5,1000,0,2,2,"0000-00-00 00:00:00","test only2",20130315111408-2

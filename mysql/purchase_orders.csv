@@ -1,0 +1,4 @@
+company_id,purchase_order_no,purchase_order_date,modified_by,purchase_order_status,purchase_order_amount,purchase_order_minimum_amount,purchase_order_minimum_quantity,supplier_order_condition,purchase_order_note,supplier_no,supplier_sub_no
+1,1,"2013-01-03 11:23:00",1,1,10,10,1,NULL,jr,1,1
+1,2,"2013-02-04 00:00:00",2,1,50,20,2,NULL,jr,2,1
+2,3,"2013-03-00 00:00:00",3,1,200,30,3,NULL,jr,3,1
