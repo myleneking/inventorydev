@@ -1,0 +1,64 @@
+.tt
+---
+
+[% CALL add_js('/js/purchase_order/order_list.js') %]
+
+<div class="align_right">
+    <button>
+        <a href="javascript:void(0);" class="popwindow_purchase_order" data-url="[% c.uri_for_action('purchase_order/add') %]">発注伝票起票</a>
+    </button>
+</div>
+
+/js/purchase_order/order_list.js
+--------------------------------
+
+$(function(){
+
+var popwindow_num = 1;
+
+$('.popwindow_purchase_order').click(function(){
+	var url = $(this).data('url');
+	var windowName = 'purchase_order';
+	var openmethod = $('input[name="openmethod"]:checked').val()
+	if (openmethod == "newWindow") {
+		windowName = 'purchase_order' + popwindow_num;
+		popwindow_num++;
+	}
+	window.open(url, windowName, 'width=1200, height=1000, menubar=no, toolbar=no, scrollbars=yes');
+	return false;
+})
+
+$('#reload_page').click(function(){
+    $('#hidden_search_form').submit();
+})
+
+$('#button_search_purchase_order')
+.data('url', '/common/search/search_purchase_order/')
+.data('postForm','hidden_search_form')
+.data('create', function() { create_search_purchase_order(); });
+
+});
+
+function create_search_purchase_order() {
+	var dialogDiv = $('#dialog_search_purchase_order');
+
+	dialogDiv.dialog('option', 'minWidth', 950);
+	dialogDiv.dialog('option', 'title', '伝票検索');
+
+	init_search_purchase_order();
+
+	dialogDiv.find('.action_cancel').click(function(){
+		dialogDiv.dialog('close');
+	});
+
+	dialogDiv.find('.action_reset').click(function(){
+		dialogDiv.find('form#purchase_order_search_form')[0].reset();
+	});
+
+	dialogDiv.find('.action_ok').click(function(){
+		dialogDiv
+		.find('form#purchase_order_search_form')
+		.attr('action', '/purchase_order/search')
+		.submit();
+	});
+}

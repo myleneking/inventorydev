@@ -114,3 +114,86 @@ open winscp
 YAML
 ----
 http://yaml.org/spec/1.2/spec.html
+
+MYsQL setup
+-----------
+*make sure to use bridge connection for VM.
+from vm-ubuntu:
+
+mysql -u root -p
+>select user,host from mysql.user;
+>show databases;
+>grant all on *.* to 'root'@'192.169.1.61'; >> ipadd=local pc
+>flush privileges;
+
+from local-pc (windows):
+
+cd C:\xampp\mysql\bin
+mysql -h 192.168.1.64 -u root -p  >> ipadd=vm-ubuntu (command ifconfig)
+
+from mysql workbench application:
+
+New Connection [Below]
+Connection: sellco_dev03
+Hostname: 192.168.1.64 [ipadd from vm-ubuntu]
+
+FIREFOX
+-------
+Add-ons
+- FireBug
+- HttpFox
+
+ECLIPSE
+-------
+*Help >> Install New Ssoftware
+http://www.ne.jp/asahi/zigen/home/plugin/dbviewer/
+
+*Preference >> search for keys
+
+*Common Shortcut Keys
+Ctrl + Shift + R  search file
+Ctrl + Alt + A find in file
+Ctrl + Alt + D find in file project
+Ctrl + Alt + G find in file workspace
+Ctrl + D Delete one line
+Ctrl + Q Return to last edit position
+Ctrl + / Comment
+
+PERL CYGWIN
+-----------
+*'cygwin' - folder containing cache from internet
+*setup.exe - run to initialized setup
+
+open setup
+Install From Internet;NEXT
+NEXT
+set local package directory [G:\Winas\Installer];NEXT
+Direct Connection;NEXT
+Available download sites: http://ftp.jaist.ac.jp;NEXT
+Expand to +Perl [Choose download];NEXT
+
+[After install]
+*add to system environment
+Open System Properties
+  Advanced [Tab]
+    Environment Variables
+      Edit System Variable 
+        Variable Name: Path
+        Variable value: C:\cygwin\bin [bin directory of perl]
+
+VBOX MOUNT FOLDER
+-----------------
+Open vm-ubuntu Settings:
+Shared Folder Setup
+Add Folder
+  Folder Path: [Browse]
+  Folder Name: workspace-perl
+  Auto-mount: [Checked]
+  
+
+open terminal in vm-ubuntu:
+vi /etc/fstab
+add line at the bottom..
+/myking /media/myking vboxsf defaults
+/workspace-perl /media/workspace-perl vboxsf defaults
+
