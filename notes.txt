@@ -1,50 +1,3 @@
-Assigned Tasks
---------------
-- Order Management
-- Sales Management
-- Tools Management
-
-server
-------
-203.140.228.131 (sellco-apt)
-user: mylene
-pwd: 8Xn7jSnyBT
-
-ssh -p 1022 mylene@203.140.228.131
-
-git repository
---------------
-git+ssh://mylene@altair.winas.jp:1022/srv/repository/sellco-app.git
-
-development servers
--------------------
-/srv/dev01.sellco.jp
-/srv/dev02.sellco.jp
-/srv/dev03.sellco.jp
-
-http://dev03.sellco.jp/
------------------------
-user: sellco
-pwd: G5baAUvero
-
-user: 1
-pwd: winas1234
-
-user: winas
-pwd: winas4321
-
-application log files
----------------------
-/srv/dev03.sellco.jp/logs/app_log.XX.
-
-readmine link
--------------
-http://redmine.winas.jp/projects/stock-management/wiki/URL_Mapping
-http://redmine.winas.jp/documents/339 - screen design
-http://redmine.winas.jp/documents/335 - asta
-http://redmine.winas.jp/documents/334 - database structure
-http://redmine.winas.jp/projects/stock-management/wiki
-
 session table
 -------------
 CREATE TABLE `sellco_dev03_sessions` (
@@ -88,16 +41,6 @@ purchase_order_status
 3 = issued
 4 = incomplete purchase
 5 = complete purchase
-
-LOCAL LOGIN
------------
-company_login
-user:1
-pwd:winas1234
-
-user_login
-user:winas@winas.jp
-pwd:winas4321
 
 CREATING PROXY
 --------------
@@ -196,4 +139,3 @@ vi /etc/fstab
 add line at the bottom..
 /myking /media/myking vboxsf defaults
 /workspace-perl /media/workspace-perl vboxsf defaults
-
