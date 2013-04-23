@@ -80,6 +80,27 @@ New Connection [Below]
 Connection: sellco_dev03
 Hostname: 192.168.1.64 [ipadd from vm-ubuntu]
 
+MYSQL when ip changes
+---------------------
+sudo vim /etc/mysql/my.cnf
+..
+bind-address = 192.168.2.201 (ubuntu ip)
+..
+
+Setup static ip address for ubuntu
+----------------------------------
+sudo vi /etc/network/interfaces
+
+auto eth0
+iface eth0 inet static
+address 192.168.1.100
+netmask 255.255.255.0
+network 192.168.1.0
+broadcast 192.168.1.255
+gateway 192.168.1.1
+
+sudo /etc/init.d/networking restart
+
 FIREFOX
 -------
 Add-ons
