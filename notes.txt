@@ -139,3 +139,7 @@ vi /etc/fstab
 add line at the bottom..
 /myking /media/myking vboxsf defaults
 /workspace-perl /media/workspace-perl vboxsf defaults
+
+LOG4PERL
+--------
+my $log = Log::Log4perl->get_logger(__PACKAGE__);
