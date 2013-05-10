@@ -54,3 +54,6 @@ Exception::Class
 
 --install
 Catalyst::Authentication::Store::DBIx::Class
+
+--install
+DateTime::HiRes
